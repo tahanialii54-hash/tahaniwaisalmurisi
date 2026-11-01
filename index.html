@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تطبيقات JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الشريط المتحرك العلوي -->
+  <div class="ticker-bar">
+    <div class="ticker-text">
+      ✨ أهلاً بك في منصة تطبيقات JavaScript التفاعلية 🚀 | تدرّج معنا من المتغيرات وحتى البرمجة الكائنية OOP 💡 | صُمم التطبيق خصيصاً لتسهيل تعلم البرمجة بطريقة عصرية ✨
+    </div>
+  </div>
+
+  <!-- زر فتح القائمة الجانبية (يظهر في الهواتف فقط) -->
+  <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰ القائمة</button>
+
+  <!-- القائمة الجانبية الثابتة -->
+  <aside class="sidebar" id="appSidebar">
+    <button class="sidebar-close" onclick="toggleSidebar()">✕</button>
+    <h3>قائمة الأمثلة (1 إلى 9)</h3>
+    <div class="sidebar-item" onclick="openModal('modal-calc'); toggleSidebar();">1. المتغيرات والحساب</div>
+    <div class="sidebar-item" onclick="openModal('modal-cond'); toggleSidebar();">2. الجمل الشرطية</div>
+    <div class="sidebar-item" onclick="openModal('modal-loop'); toggleSidebar();">3. الحلقات التكرارية</div>
+    <div class="sidebar-item" onclick="openModal('modal-array'); toggleSidebar();">4. إدارة المصفوفات</div>
+    <div class="sidebar-item" onclick="openModal('modal-string'); toggleSidebar();">5. معالجة النصوص</div>
+    <div class="sidebar-item" onclick="openModal('modal-object'); toggleSidebar();">6. كائنات جافاسكريبت</div>
+    <div class="sidebar-item" onclick="openModal('modal-date'); toggleSidebar();">7. التاريخ والوقت</div>
+    <div class="sidebar-item" onclick="openModal('modal-functions'); toggleSidebar();">8. الدوال (Functions)</div>
+    <div class="sidebar-item" onclick="openModal('modal-oop'); toggleSidebar();">9. البرمجة الكائنية OOP</div>
+  </aside>
+
+  <!-- الهيدر اللؤلؤي -->
+  <header class="pearl-header">
+    <div class="header-content">
+      <h1>✨ تطبيقات JavaScript</h1>
+    
+    </div>
+  </header>
+
+  <!-- شبكة بطاقات الأمثلة التسعة -->
+  <main class="grid">
+    <div class="icon-card" onclick="openModal('modal-calc')">
+      <div class="icon">🧮</div>
+      <h3>1. المتغيرات والحساب</h3>
+      <p>آلة حاسبة ذكية بحساب المتغيرات</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-cond')">
+      <div class="icon">⚖️</div>
+      <h3>2. الجمل الشرطية</h3>
+      <p>فحص الدرجات وتقييم التقديرات</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-loop')">
+      <div class="icon">🔄</div>
+      <h3>3. الحلقات التكرارية</h3>
+      <p>توليد جداول الضرب باستخدام For Loop</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-array')">
+      <div class="icon">📦</div>
+      <h3>4. إدارة المصفوفات</h3>
+      <p>إدارة قوائم البيانات الديناميكية</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-string')">
+      <div class="icon">🔤</div>
+      <h3>5. معالجة النصوص</h3>
+      <p>تحليل النصوص، حساب الحروف، والتحويل</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-object')">
+      <div class="icon">👤</div>
+      <h3>6. كائنات جافاسكريبت</h3>
+      <p>إدارة البيانات المركبة عبر الـ Objects</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-date')">
+      <div class="icon">⏰</div>
+      <h3>7. التاريخ والوقت</h3>
+      <p>عرض التوقيت الحي والتحية التلقائية</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-functions')">
+      <div class="icon">⚡</div>
+      <h3>8. الدوال (Functions)</h3>
+      <p>إعادة استخدام الأكواد عبر الدوال</p>
+      <span class="badge">جاهز</span>
+    </div>
+
+    <div class="icon-card" onclick="openModal('modal-oop')">
+      <div class="icon">🏛️</div>
+      <h3>9. البرمجة الكائنية OOP</h3>
+      <p>إنشاء وإدارة الكائنات عبر الـ Classes</p>
+      <span class="badge">جاهز</span>
+    </div>
+  </main>
+
+  <!-- النوافذ المنبثقة للتطبيقات التسعة -->
+  <!-- 1. الحاسبة -->
+  <div class="modal-overlay" id="modal-calc">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-calc')">✕</button>
+      <h2 class="modal-title">🧮 آلة الحساب اللؤلؤية</h2>
+      <p class="modal-desc">تطبيق مباشر على المتغيرات والعمليات الحسابية</p>
+      <div class="input-group">
+        <input type="number" id="num1" placeholder="الرقم الأول" value="15">
+        <input type="number" id="num2" placeholder="الرقم الثاني" value="5">
+      </div>
+      <div class="btn-grid">
+        <button class="action-btn" onclick="calculate('+')">+</button>
+        <button class="action-btn" onclick="calculate('-')">-</button>
+        <button class="action-btn" onclick="calculate('*')">×</button>
+        <button class="action-btn" onclick="calculate('/')">÷</button>
+      </div>
+      <div class="result-box" id="calc-result">اختر عملية حسابية</div>
+    </div>
+  </div>
+
+  <!-- 2. الشروط -->
+  <div class="modal-overlay" id="modal-cond">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-cond')">✕</button>
+      <h2 class="modal-title">⚖️ برنامج التقديرات الشفاف</h2>
+      <p class="modal-desc">تطبيق على استخدام الجمل الشرطية</p>
+      <div class="input-group">
+        <input type="number" id="userScore" placeholder="أدخل الدرجة (0 إلى 100)" value="85">
+      </div>
+      <button class="action-btn full" onclick="checkGrade()" style="margin-bottom: 15px;">فحص التقدير</button>
+      <div class="result-box" id="condition-result">أدخل الدرجة واضغط فحص</div>
+    </div>
+  </div>
+
+  <!-- 3. الحلقات -->
+  <div class="modal-overlay" id="modal-loop">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-loop')">✕</button>
+      <h2 class="modal-title">🔄 مولد جدول الضرب (Loops)</h2>
+      <p class="modal-desc">تطبيق عملي لحلقات التكرار</p>
+      <div class="input-group">
+        <input type="number" id="loopNum" placeholder="أدخل رقماً" value="5">
+      </div>
+      <button class="action-btn full" onclick="generateTable()" style="margin-bottom: 15px;">توليد الجدول</button>
+      <div class="result-box" id="loop-result" style="text-align: right; max-height: 140px; overflow-y: auto;">اختر رقماً لتوليد الجدول</div>
+    </div>
+  </div>
+
+  <!-- 4. المصفوفات -->
+  <div class="modal-overlay" id="modal-array">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-array')">✕</button>
+      <h2 class="modal-title">📦 إدارة القوائم (Arrays)</h2>
+      <p class="modal-desc">تطبيق عملي على مصفوفات جافاسكريبت</p>
+      <div class="input-group" style="flex-direction: row; gap: 8px;">
+        <input type="text" id="arrayItemInput" placeholder="عنصر جديد..." style="flex: 1;">
+        <button class="action-btn" onclick="addArrayItem()" style="padding: 12px 18px;">إضافة ➕</button>
+      </div>
+      <div class="result-box" id="array-result" style="text-align: right; max-height: 150px; overflow-y: auto;">جاري تحميل العناصر...</div>
+    </div>
+  </div>
+
+  <!-- 5. النصوص -->
+  <div class="modal-overlay" id="modal-string">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-string')">✕</button>
+      <h2 class="modal-title">🔤 محلل النصوص الذكي</h2>
+      <p class="modal-desc">تطبيق عملي على دوال النصوص</p>
+      <div class="input-group">
+        <input type="text" id="textInput" placeholder="اكتب نصاً..." oninput="analyzeText()" value="مرحباً بكم في تطبيقات جافاسكريبت">
+      </div>
+      <div class="result-box" id="string-result" style="text-align: right; line-height: 1.8; max-height: 150px; overflow-y: auto;">أدخل نصاً لمعالجته...</div>
+    </div>
+  </div>
+
+  <!-- 6. الكائنات -->
+  <div class="modal-overlay" id="modal-object">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-object')">✕</button>
+      <h2 class="modal-title">👤 ملف الشخصية (Objects)</h2>
+      <p class="modal-desc">هيكلة البيانات المعقدة داخل الكائنات</p>
+      <div style="background: rgba(255,255,255,0.8); padding: 14px; border-radius: 12px; margin-bottom: 15px; text-align: right;" id="profile-display"></div>
+      <button class="action-btn full" onclick="updateProfileStatus()">تغيير الحالة البرمجية ⚡</button>
+    </div>
+  </div>
+
+  <!-- 7. الوقت -->
+  <div class="modal-overlay" id="modal-date">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-date')">✕</button>
+      <h2 class="modal-title">⏰ الساعة والتقويم الذكي</h2>
+      <p class="modal-desc">استخدام كائن التاريخ Date</p>
+      <div style="background: rgba(255,255,255,0.8); padding: 16px; border-radius: 12px; margin-bottom: 18px; text-align: center;" id="time-display"></div>
+      <button class="action-btn full" onclick="updateLiveTime()">تحديث الوقت الآن 🔄</button>
+    </div>
+  </div>
+
+  <!-- 8. الدوال -->
+  <div class="modal-overlay" id="modal-functions">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-functions')">✕</button>
+      <h2 class="modal-title">⚡ محول الوحدات بالدوال</h2>
+      <p class="modal-desc">كتابة وإعادة استخدام الدوال ومعاملاتها</p>
+      <div class="input-group">
+        <input type="number" id="inputValue" placeholder="القيمة بالكيلومتر..." value="10">
+      </div>
+      <button class="action-btn full" onclick="runConverter()" style="margin-bottom: 12px;">تحويل إلى أميال ومتر 🔄</button>
+      <div class="result-box" id="function-result" style="text-align: right; line-height: 1.8;">النتائج ستظهر هنا...</div>
+    </div>
+  </div>
+
+  <!-- 9. الـ OOP -->
+  <div class="modal-overlay" id="modal-oop">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-oop')">✕</button>
+      <h2 class="modal-title">🏛️ نظام الفئات والـ OOP</h2>
+      <p class="modal-desc">استخدام Classes لإنشاء وإدارة المنتجات</p>
+      <div class="input-group">
+        <input type="text" id="productName" placeholder="اسم المنتج..." style="margin-bottom: 6px;">
+        <input type="number" id="productPrice" placeholder="السعر ($)" style="margin-bottom: 6px;">
+      </div>
+      <button class="action-btn full" onclick="addNewProduct()" style="margin-bottom: 12px;">إضافة منتج جديد 🛒</button>
+      <div class="result-box" id="oop-result" style="text-align: right; max-height: 140px; overflow-y: auto;">لا توجد منتجات...</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>تطبيقات JavaScript الاحترافية ✨</p>
+    
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
